@@ -10,28 +10,30 @@ The goal of this challenge was to capture the flag by analyzing a publicly acces
 
 ## IAM Policy
 
+```
 {
-"Version": "2012-10-17",
-"Statement": [
-{
-"Effect": "Allow",
-"Principal": "*",
-"Action": "s3:GetObject",
-"Resource": "arn:aws:s3:::thebigiamchallenge-storage-9979f4b/*"
-},
-{
-"Effect": "Allow",
-"Principal": "*",
-"Action": "s3:ListBucket",
-"Resource": "arn:aws:s3:::thebigiamchallenge-storage-9979f4b",
-"Condition": {
-"StringLike": {
-"s3:prefix": "files/*"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::thebigiamchallenge-storage-9979f4b/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::thebigiamchallenge-storage-9979f4b",
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": "files/*"
+                }
+            }
+        }
+    ]
 }
-}
-       }
-    ]
-}
+```
 
 ### Short analysis about the IAM policy
 

@@ -89,13 +89,11 @@ Step 3: Accessed the URL
 
 The URL provided in the message directed me to the flag. The URL is:
 
-https://tbic-wiz-analytics-bucket-b44867f.s3.amazonaws.com/pAXCWLa6ql.html
+    https://tbic-wiz-analytics-bucket-b44867f.s3.amazonaws.com/pAXCWLa6ql.html
 
-I accessed this URL and found the flag content hidden within the HTML file.
+I accessed this URL and found the flag content within the HTML file.
 
 Step 4: Captured the Flag
-
-The content retrieved from the HTML file revealed the flag:
 
 Flag Content: {wiz:you-are-at-the-front-of-the-queue}
 

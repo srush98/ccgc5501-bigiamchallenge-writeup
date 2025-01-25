@@ -6,7 +6,7 @@
 
 ## Challenge Statement
 
-The objective of this challenge was to exploit overly permissive SNS (Simple Notification Service) policies, subscribe to a topic, and capture the flag by analyzing messages received via the topic.
+The goal of Challenge 3 is to exploit an overly permissive IAM policy on an Amazon SNS topic to subscribe without authorization, intercept notifications, and capture the flag within the message. The challenge highlights the risks of weak access controls in cloud environments.
 
 ## IAM Policy
 
@@ -66,12 +66,14 @@ Using the custom endpoint, I executed the following command to subscribe to the 
     The command returned a Subscription ARN, confirming that the subscription request was successful.
 
 Step 3: Confirmed the Subscription
-Step 3: Confirmed the Subscription
 After running the aws sns subscribe command, the response indicated the subscription was in a "pending confirmation" state:
 
+```
 {
-"SubscriptionArn": "pending confirmation"
+    "SubscriptionArn": "pending confirmation"
 }
+```
+
 To confirm the subscription, I checked the logs of my Request Catcher endpoint (https://srush.requestcatcher.com/test@tbic.wiz.io). The logs showed an HTTP POST request containing the SubscriptionConfirmation message, as shown below:
 
 ```
@@ -155,6 +157,6 @@ Finally, I inserted the flag found in the "Insert flag here" textbox and I was r
 - On the Blue Side: Defensive Measures
   - Restrict the Principal: Replace Principal: "\_" with trusted roles or accounts to limit unauthorized access.
   - Use endpoint verification: Ensure that endpoints are owned or managed by the intended recipients using tokenized confirmation processes.
-  - Disable overly broad conditions: Replace wildcard conditions like sns:Endpoint: "_@tbic.wiz.io" with specific allowed endpoints.
+  - Disable overly broad conditions: Replace wildcard conditions like sns:Endpoint: "\*@tbic.wiz.io" with specific allowed endpoints.
   - Monitor subscriptions and logs: Regularly audit SNS subscriptions and logs for suspicious activities.
   - Enable encryption: Use message encryption to protect sensitive data in transit.
